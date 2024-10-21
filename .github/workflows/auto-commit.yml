@@ -38,6 +38,4 @@ jobs:
           git config --local user.name "action"
           git add .
           git commit -m "Your commit message" || echo "No changes to commit"
-          git push origin HEAD:main --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.test_token }}
+          git push https://<YOUR_USERNAME>:${{ secrets.MY_PAT }}@github.com/formatjn2019/action-test.git HEAD:main --force
