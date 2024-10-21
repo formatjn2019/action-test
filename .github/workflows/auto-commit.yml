@@ -1,0 +1,31 @@
+name: Run Script and Push Changes
+
+on:
+  push:
+    branches:
+      - dev  # 监控 dev 分支的推送
+
+jobs:
+  run-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Run autodo.sh
+        run: |
+          chmod +x ./autodo.sh  # 确保脚本可执行
+          ./autodo.sh
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "autodo@example.com"
+          git config --local user.name "autodo"
+          git add .
+          git commit -m "Run autodo.sh and update changes" || echo "No changes to commit"
+
+      - name: Push changes to main branch
+        run: |
+          git push origin HEAD:main --force
+       
