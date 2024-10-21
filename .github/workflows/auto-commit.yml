@@ -36,8 +36,7 @@ jobs:
           git config --local user.name "zx"
           git add .
           git commit -m "Run autodo.sh and update changes" || echo "No changes to commit"
-          echo ${{ secrets.MY_PAT }}
-          echo ${#secrets.MY_PAT}
+
       - name: Push changes to main branch
         run: |
           git config --local user.email "action@example.com"
