@@ -39,17 +39,10 @@ jobs:
           git config --local user.email "formatjn2019@gmail.com"
           git config --local user.name "zx"
           git add .
-          git commit -m "Run autodo.sh and update changes" || echo "No changes to commit"
+          git commit -m "Run autodo.sh and update changes" || echo "No changes to commit
 
-      - name: Commit changes
+      - name: Push changes to main branch
         run: |
-          git config --local user.email "you@example.com"
-          git config --local user.name "Your Name"
-          git add .
-          git commit -m "Run autodo.sh and update changes" || echo "No changes to commit"
-
-          - name: Push changes to main branch
-            run: |
-              git push origin HEAD:main --force
-            env:
-              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push origin HEAD:main --force
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
