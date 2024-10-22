@@ -38,6 +38,7 @@ jobs:
         run: | 
           git config --local user.email "formatjn2019@gmail.com"
           git config --local user.name "zx"
+          echo "332">ff.txt
           git add .
           git commit -m "Run autodo.sh and update changes" || echo "No changes to commit
 
