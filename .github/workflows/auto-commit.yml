@@ -7,7 +7,7 @@ permissions:
 on:
   push:
     branches:
-      - dev  # 监控 dev 分支的推送
+      - doc
 
 jobs:
   run-and-push:
@@ -24,15 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install gitPython
 
-      - name: Run autodo.sh
+      - name: Run update blog
         run: |
           chmod +x ./autodo.sh  # 确保脚本可执行
           ./autodo.sh
-      - name: Get length of MY_PAT
-        run: |
-          echo "Length of MY_PAT: ${#MY_PAT}"
-        env:
-          MY_PAT: ${{ secrets.MY_PAT }}
 
       - name: Commit changes
         run: | 
@@ -40,9 +35,4 @@ jobs:
           git config --local user.name "zx"
           git add .
           git commit -m "Run autodo.sh and update changes" || echo "No changes to commit"
-
-      - name: Push changes to main branch
-        run: |
-          git config --local user.email "action@example.com"
-          git config --local user.name "action"
           git push origin HEAD:main --force

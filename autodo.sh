@@ -1,1 +1,1 @@
-python test.py
+python create_config_and_indexs.py
